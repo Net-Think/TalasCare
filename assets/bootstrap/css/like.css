@@ -1,0 +1,4 @@
+/* Tambahkan warna merah untuk tombol yang disukai */
+.like-button.liked {
+    color: pink;
+}

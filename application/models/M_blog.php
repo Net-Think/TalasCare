@@ -38,7 +38,7 @@ class M_blog extends  CI_Model
         return $query->result();
     }
 
-    function update_toko($where, $data, $table)
+    function update_blog($where, $data, $table)
     {
         $this->db->where($where);
         $this->db->update($table, $data);

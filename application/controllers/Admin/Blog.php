@@ -79,11 +79,8 @@ class Blog extends CI_Controller{
     public function update()
     {
         $id_blog   = $this->input->post('id_blog');
-        $nama = $this->input->post('nama');
-        $deskripsi = $this->input->post('deskripsi');
-        $pencegahan    = $this->input->post('pencegahan');
-        $pengobatan    = $this->input->post('pengobatan');
-        $jenis     = $this->input->post('jenis');
+        $judul = $this->input->post('judul');
+        $isi = $this->input->post('isi');
         $old_image = $this->input->post('old_image');
 
         //jika ada gambar
@@ -91,7 +88,7 @@ class Blog extends CI_Controller{
 
         if ($upload_image) {
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['upload_path']          = './assets/images/';
+            $config['upload_path']          = './assets/img/blog/';
 
             $this->load->library('upload', $config);
 
@@ -99,7 +96,7 @@ class Blog extends CI_Controller{
 
                 $old_image = $old_image;
                 if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . './assets/images/' . $old_image);
+                    unlink(FCPATH . './assets/img/blog/' . $old_image);
                 }
 
                 $new_image = $this->upload->data('file_name');
@@ -113,11 +110,8 @@ class Blog extends CI_Controller{
         );
 
         $data = array(
-            'nama'     => $nama,
-            'deskripsi'     => $deskripsi,
-            'pencegahan'    => $pencegahan,
-            'pengobatan'    => $pengobatan,
-            'jenis'         => $jenis
+            'judul'          => $judul,
+            'isi'     => $isi
         );
         $this->M_blog->update_blog($where, $data, 'tbl_blog');
         redirect('Admin/Blog');

@@ -9,16 +9,16 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-xl-12">
-                                <form action="<?= base_url ('Admin/Blog/insert') ?>" method="POST" enctype='multipart/form-data'>
+                                <form action="<?= base_url ('Admin/Blog/update') ?>" method="POST" enctype='multipart/form-data'>
                                 <?php foreach ($dblog as $dblg) : ?>
                                         <div class="form-group">
                                             <label for="NamaToko">Judul Blog</label>
-                                            <input type="hidden" class="form-control" id="NamaToko" aria-describedby="NamaToko" name="judul" value="<?= $dblg->id_blog ?>" required>
+                                            <input type="hidden" class="form-control" id="NamaToko" aria-describedby="NamaToko" name="id_blog" value="<?= $dblg->id_blog ?>" required>
                                             <input type="text" class="form-control" id="NamaToko" aria-describedby="NamaToko" name="judul" value="<?= $dblg->judul ?>" required>
                                         </div>
                                         <label>Gambar</label>
                                     <div class="custom-file">
-                                        <input type="file" class="form-control" id="customFile" name="gambar" accept="image/*" onchange="loadFile(event)" onclick="hide()" required>
+                                        <input type="file" class="form-control" id="customFile" name="gambar" accept="image/*" onchange="loadFile(event)" onclick="hide()">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                     <div class="col-12 mt-3" id="hilang">

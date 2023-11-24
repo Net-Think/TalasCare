@@ -26,6 +26,18 @@ class Pengguna extends CI_Controller{
             'status'    => '0',
         );
         $this->M_user->update_status($where, $data, 'tbl_user');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Akun berhasil dinonaktifkan</div>');
+        redirect('Admin/Pengguna');
+    } 
+    public function aktif($id){
+        $where = array(
+            'id_user' => $id
+        );
+        $data = array(
+            'status'    => '1',
+        );
+        $this->M_user->update_status($where, $data, 'tbl_user');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Akun berhasil diaktifkan kembali</div>');
         redirect('Admin/Pengguna');
     } 
 

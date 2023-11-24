@@ -98,7 +98,7 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-lg-6 col-md-12 col-sm-12">
-              <a href="#" class="map-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Lihat Lebih Lengkap</a>
+              <a href="<?= base_url ('TalasMaps')?>" class="map-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Lihat Lebih Lengkap</a>
             </div>
           </div>
         </div>

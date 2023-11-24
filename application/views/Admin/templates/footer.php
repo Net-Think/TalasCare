@@ -41,8 +41,6 @@
     <script>
         function hide() {
             $('#show').css("display", "block");
-        }
-        function hide() {
             $('#hilang').css("display", "none");
         }
     </script>
@@ -72,6 +70,13 @@
             reader.readAsDataURL(event.target.files[0]);
         };
     </script>
+    <script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 2000);
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?= base_url('assets/admin/')?>vendor/jquery/jquery.min.js"></script>
@@ -89,6 +94,7 @@
     <!-- Page level custom scripts -->
     <script src="<?= base_url('assets/admin/')?>js/demo/chart-area-demo.js"></script>
     <script src="<?= base_url('assets/admin/')?>js/demo/chart-pie-demo.js"></script>
+    
 
 </body>
 

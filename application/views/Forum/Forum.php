@@ -219,8 +219,8 @@
                                 </div>
                                 <?php elseif($this->session->userdata('status') == 'login') : ?>
                                     <div class="action">
-                                    <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
-                                    <img src="<?=base_url('assets/')?>image/like.svg" alt="">
+                                    <button class="btn btn-action like-button <?= ($frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
+                                        <img src="<?=base_url('assets/')?>image/like.svg" alt="">
                                         <span class="like-count"><?= $frm->jumlah_suka ?></span>
                                     </button>
                                     <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
@@ -308,32 +308,27 @@
         </div>
     </section>
     <script>
+    // Pastikan untuk memuat jQuery sebelumnya dalam skrip Anda
     function likeForum(button) {
-    var forumId = $(button).data('forum-id');
+        var forumId = $(button).data('forum-id');
 
-    $.ajax({
-        url: '<?= base_url('Forum/likeForum') ?>',
-        type: 'POST',
-        data: { forum_id: forumId },
-        dataType: 'json',
-        success: function(response) {
-            var likeCountSpan = $(button).find('.like-count');
-            likeCountSpan.text(response.jumlah_like);
-            if (response.liked_status === 1) {
-                $(button).addClass('liked');
-                $(button).css('color', 'red');
-            } else {
-                $(button).removeClass('liked');
-                $(button).css('color', 'black');
+        $.ajax({
+            url: '<?= base_url('Forum/likeForum') ?>',
+            type: 'POST',
+            data: { forum_id: forumId },
+            dataType: 'json',
+            success: function(response) {
+                var likeCountSpan = $(button).find('.like-count');
+                likeCountSpan.text(response.jumlah_like);
+
+                if (response.liked_status === 1) {
+                    $(button).addClass('liked');
+                } else {
+                    $(button).removeClass('liked');
+                }
             }
-        }
-    });
-}
-
-
-
-    </script>
-
+        });
+    }
 </script>
 
     <script>

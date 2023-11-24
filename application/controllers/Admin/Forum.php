@@ -26,6 +26,7 @@ class Forum extends CI_Controller{
     public function hapusForum($id)
     {
         $this->M_forum->hapusForum($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Forum berhasil dihapus</div>');
         redirect('Admin/Forum');
     }
     public function updateforum()
@@ -64,7 +65,7 @@ class Forum extends CI_Controller{
             'isi' => $isi
         );
         $this->M_forum->update($where, $data, 'tbl_forum');
-        $this->session->set_flashdata('message', '<small class="message-success alert" role="alert">Forum berhasil diubah</small>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Forum berhasil diubah</div>');
         redirect('Admin/Forum');
     }
 

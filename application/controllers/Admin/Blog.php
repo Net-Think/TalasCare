@@ -24,6 +24,7 @@ class Blog extends CI_Controller{
             'id_blog' => $id
         ];
         $this->M_blog->hapus_blog($where, 'tbl_blog');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Blog berhasil dihapus</div>');
         redirect('Admin/Blog');
     }
 
@@ -59,6 +60,7 @@ class Blog extends CI_Controller{
             'gambar'        => $gambar
         );
         $query = $this->M_blog->input_blog('tbl_blog', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Blog berhasil ditambah</div>');
         redirect('Admin/Blog');
     }
 
@@ -114,6 +116,7 @@ class Blog extends CI_Controller{
             'isi'     => $isi
         );
         $this->M_blog->update_blog($where, $data, 'tbl_blog');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Blog berhasil diubah</div>');
         redirect('Admin/Blog');
     }
 }

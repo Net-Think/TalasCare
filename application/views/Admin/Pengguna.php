@@ -6,7 +6,7 @@
     <h1 class="h3 mb-0 font-primary">Data Pengguna</h1>
     <a href="<?= base_url('admin/pengguna/download-csv') ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa-solid fa-arrow-down"></i> Unduh Data</a>
 </div>
-
+    <?= $this->session->flashdata('message') ?>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -43,7 +43,11 @@
                             <?php endif?>
                         </td>
                         <td>
-                            <a href="<?= base_url('Admin/Pengguna/blokir/').$usr->id_user ?>" class="btn btn-purple-secondary" onclick="return confirm('Yakin ingin blokir?')"><i class="fa-solid fa-xmark"></i></a>
+                        <?php if($usr->status==1): ?>
+                            <a href="<?= base_url('Admin/Pengguna/blokir/').$usr->id_user ?>" class="btn btn-purple-secondary" onclick="return confirm('Yakin ingin menonaktifkan akun ini?')"><i class="fa-solid fa-xmark"></i></a>
+                            <?php else:?>
+                                <a href="<?= base_url('Admin/Pengguna/aktif/').$usr->id_user ?>" class="btn btn-success" onclick="return confirm('Yakin ingin mengaktifkan lagi akun ini?')"><i class="fa-solid fa-check"></i></a>
+                            <?php endif?>
                         </td>
                     </tr>
                     <?php endforeach ?>

@@ -193,3 +193,7 @@
     border-color: #F4BCE7;
     box-shadow: 0 0 0 0.2rem rgba(105, 136, 228, 0.5);
   }
+
+  #active{
+    font-weight:700
+  }

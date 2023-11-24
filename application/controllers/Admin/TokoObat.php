@@ -24,6 +24,7 @@ class TokoObat extends CI_Controller{
             'id_toko' => $id
         ];
         $this->M_tokoobat->hapus_toko($where, 'tbl_toko');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Data toko berhasil dihapus</div>');
         redirect('Admin/TokoObat');
     }
 
@@ -76,6 +77,7 @@ class TokoObat extends CI_Controller{
             'gambar'        => $gambar,
         );
         $query = $this->M_tokoobat->input_toko('tbl_toko', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Data toko berhasil ditambah</div>');
         redirect('Admin/TokoObat');
     }
 
@@ -143,6 +145,7 @@ class TokoObat extends CI_Controller{
             'jam_tutup'     => $jam_tutup,
         );
         $this->M_tokoobat->update_toko($where, $data, 'tbl_toko');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Data toko berhasil diubah</div>');
         redirect('Admin/TokoObat');
     }
 

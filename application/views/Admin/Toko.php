@@ -6,6 +6,7 @@
                         </a>
                     </div>
                     <a href="<?= base_url('admin/tokoobat/download-csv') ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-2"><i class="fa-solid fa-arrow-down"></i> Unduh Data</a>
+                    <?= $this->session->flashdata('message') ?>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold font-primary">Data Toko Obat</h6>

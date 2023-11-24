@@ -34,38 +34,34 @@ class Login extends CI_Controller
         $password = $this->input->post('password');
         $user = $this->db->get_where('tbl_user', ['username' => $username])->row_array();
         if ($user) {
-            //adduser
-            if ($user) {
-                if ($user['verified'] < 1) {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Anda belum teraktivasi</div>');
-                    redirect('Auth/Login');
-                } elseif (password_verify($password, $user['password'])) {
-                    $this->session->userdata('username', $user);
+            // adduser
+            if ($user['verified'] < 1) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Anda belum teraktivasi</div>');
+                redirect('Auth/Login');
+            } elseif (password_verify($password, $user['password'])) {
+                if ($user['status'] == 1) {
+                    $this->session->set_userdata('username', $user);
                     $data = [
-
                         'username' => $user['username'],
                         'id_user' => $user['id_user'],
                         'status' => 'login'
-
                     ];
                     $this->session->set_userdata($data);
                     redirect('');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password anda salah!
-            </div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun Anda dinonaktifkan</div>');
                     redirect('Auth/Login');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun ini tidak aktif
-            </div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password anda salah!</div>');
                 redirect('Auth/Login');
             }
         } else {
-            //tidak ada user
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun ini tidak terdaftar
-            </div>');
+            // tidak ada user
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun ini tidak terdaftar</div>');
             redirect('Auth/Login');
         }
+        
     }
     public function activate()
     {

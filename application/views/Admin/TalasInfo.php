@@ -5,6 +5,7 @@
                             <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data
                         </a>
                     </div>
+                    <?= $this->session->flashdata('message') ?>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold font-primary">Data Hama dan Penyakit</h6>

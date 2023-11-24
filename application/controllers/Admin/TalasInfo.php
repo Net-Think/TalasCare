@@ -24,6 +24,7 @@ class TalasInfo extends CI_Controller{
             'id_hama' => $id
         ];
         $this->M_talasinfo->hapus_info($where, 'tbl_hama');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Data berhasil dihapus</div>');
         redirect('Admin/TalasInfo');
     }
 
@@ -64,6 +65,7 @@ class TalasInfo extends CI_Controller{
             'jenis'         => $jenis,
         );
         $query = $this->M_talasinfo->input_info('tbl_hama', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Data berhasil ditambah</div>');
         redirect('Admin/TalasInfo');
     }
 
@@ -124,6 +126,7 @@ class TalasInfo extends CI_Controller{
             'jenis'         => $jenis
         );
         $this->M_talasinfo->update_info($where, $data, 'tbl_hama');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-12 mb-2" role="alert">Data berhasil diubah</div>');
         redirect('Admin/TalasInfo');
     }
 }

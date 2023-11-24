@@ -20,6 +20,11 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/admin/')?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/admin/')?>css/style-admin.css" rel="stylesheet">
+    <style>
+        #show {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -40,31 +45,31 @@
 <hr class="sidebar-divider my-0 mt-4 mb-3">
 
 <!-- Nav Item -->
-<li class="nav-item active">
+<li class="nav-item <?php if ($this->uri->segment(2) == "Dashboard") { echo 'active';} ?>">
     <a class="nav-link" href="<?= base_url('Admin/Dashboard')?>">
         <i class="fa-solid fa-house"></i>
         <span>Dashboard</span>
     </a>
 </li>
-<li class="nav-item">
+<li class="nav-item <?php if ($this->uri->segment(2) == "Pengguna") { echo 'active';} ?>">
                 <a class="nav-link" href="<?= base_url('Admin/Pengguna')?>">
                 <i class="fa-solid fa-users"></i>
                     <span>Pengguna</span>
                 </a>
 </li>
-<li class="nav-item ">
+<li class="nav-item <?php if ($this->uri->segment(2) == "TokoObat") { echo 'active';} ?>">
     <a class="nav-link" href="<?= base_url('Admin/TokoObat')?>">
         <i class="fas fa-fw fa-table"></i>
         <span>Toko Obat</span>
     </a>
 </li>
-<li class="nav-item">
+<li class="nav-item <?php if ($this->uri->segment(2) == "TalasInfo") { echo 'active';} ?>">
                 <a class="nav-link" href="<?= base_url('Admin/TalasInfo')?>">
                 <i class="fa-solid fa-leaf"></i>
                     <span>Talas Info</span>
                 </a>
 </li>
-<li class="nav-item ">
+<li class="nav-item <?php if ($this->uri->segment(2) == "Blog") { echo 'active';} ?>">
     <a class="nav-link" href="<?= base_url('Admin/Blog')?>">
         <i class="fa-solid fa-blog"></i>
         <span>Blog</span>
@@ -77,7 +82,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="<?= base_url('Admin/Auth/Login/logout')?>">
+    <a class="nav-link" href=" " data-toggle="modal" data-target="#logoutModal">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span>Logout</span>
     </a>

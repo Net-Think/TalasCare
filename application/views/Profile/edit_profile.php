@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="nqiBR_4BjU4P4pg1u6hihB5cDmhubifJf3o9vbKANOs" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/')?>img/icon.png" />
     <title>TalasCare | Forum</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?=base_url('assets/')?>bootstrap/css/bootstrap.css">
@@ -100,7 +101,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="post_forum.php">
+                                        <a href="<?= base_url('Forum')?>">
                                             <div class="body-filter">
                                                     <img src="<?= base_url('assets/image/') ?>forum.svg" alt="">
                                                 <div class="filter-text">

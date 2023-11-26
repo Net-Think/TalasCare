@@ -74,6 +74,76 @@
     <a href="#" class="scroll-top btn-hover">
       <i class="lni lni-chevron-up"></i>
     </a>
+    <script>
+    var map = L.map('map').setView([-6.592799367624613, 106.78570711553688], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+// buat variabel berisi fugnsi L.popup 
+var popup = L.popup();
+
+// buat fungsi popup saat map diklik
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+
+        document.getElementById('latlong').value = e.latlng //value pada form latitde, longitude akan berganti secara otomatis
+    }
+    map.on('click', onMapClick); //jalankan fungsi
+
+    // Add a marker for the user's current location
+    var userIcon = L.icon({
+    iconUrl: '<?=base_url('assets/img/upload/location.png') ?>', // Provide the path to your user icon
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+});
+function onLocationFound(e) {
+    L.marker(e.latlng, { icon: userIcon })
+        .addTo(map)
+        .bindPopup("Kamu disini!")
+        .openPopup();
+}
+
+// Handle errors if geolocation is not available
+function onLocationError(e) {
+    alert(e.message);
+}
+
+// Request the user's location
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+map.locate({ setView: true, maxZoom: 13 });
+
+    <?php foreach($tokomap as $map) :?>
+      var customIcon = L.icon({
+        iconUrl: '<?=base_url('assets/img/upload/'. $map['gambar']) ?>',
+        iconSize: [32, 32], // Adjust the size of your icon
+        iconAnchor: [16, 32], // Adjust the anchor point of your icon
+        popupAnchor: [0, -32] // Adjust the popup anchor of your icon
+
+        
+    });
+      L.marker([<?= $map['lattitude'] ?>, <?= $map['longitude']?>],{ icon: customIcon }).addTo(map)
+      .bindPopup(`
+      <div class="popup-content">
+        <div class="popup-header">
+          <h5 class="popup-title"><?= $map['nama_toko'] ?></h5>
+          <p class="popup-rating">Rating: <?= $map['rating'] ?></p>
+        </div>
+        <div class="popup-body">
+          <p class="popup-address">Alamat: <?= $map['alamat'] ?></p>
+          <img src="<?=base_url('assets/img/upload/'. $map['gambar']) ?>" alt="Toko Image" class="popup-image img-fluid rounded">
+        </div>
+        <div class="popup-footer">
+          <a href="<?= base_url('TalasMaps/detailtoko/' . $map['id_toko']) ?>" class="btn btn-small btn-main btn-round-full text-white mt-2 col-12">Detail</a>
+        </div>
+      </div>
+    `);
+    <?php endforeach ?>
+
+</script>
     <script src="<?=base_url('assets/ai/')?>script.js"></script>
     <!-- ========================= JS here ========================= -->
     <script src="<?= base_url('assets/')?>js/bootstrap.5.0.0.alpha-2-min.js"></script>

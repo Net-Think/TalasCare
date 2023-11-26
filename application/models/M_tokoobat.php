@@ -7,6 +7,11 @@ class M_tokoobat extends  CI_Model
         $query = $this->db->query("SELECT * FROM tbl_toko");
         return $query->result();
     }
+    function datatokomap()
+    {
+        $query = $this->db->query("SELECT * FROM tbl_toko");
+        return $query->result_array();
+    }
 
     function hapus_toko($where, $table)
     {

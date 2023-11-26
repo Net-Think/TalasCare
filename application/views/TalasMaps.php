@@ -20,6 +20,15 @@
       input[type="submit"]:hover {
         background-color: #69318F;
       }
+
+      #map {
+                height: 500px;
+            }
+            .popup-image-container img {
+    border: 2px solid #000; /* Adjust the border style and color as needed */
+    border-radius: 50%; /* Optional: If you want a circular border */
+}
+
     </style>
   </head>
   <body>
@@ -31,16 +40,16 @@
               <h2 class="mb-50 wow fadeInUp" data-wow-delay=".2s">
               Pesebaran Toko Obat Hama di Bogor
               </h2>
-              <div class="row justify-content-center">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                  <div class="single-feature">
-                    <div class="content">
-                      <div id="map">
-                <iframe src="<?=base_url('assets/TalasMaps/')?>index.html" width="100%" height="636px" frameborder="0" style="border:0" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div class="row justify-content-center">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="single-feature">
+                      <div class="content">
+                        <div>
+                      <div id="map"></div>
+                      </div>
+                    </div>
+                </div>
+                </div>
     </section>
     <!-- ========================= feature-section end ========================= -->
 
@@ -113,9 +122,7 @@
                     <div class="card-body">
                       <h3 class="card-title"><?= $tk->nama_toko?></h3>
                       <img src="assets/images/Bintang/Bintang_5.png" height="15">(<?=$tk->rating?>)<br/><br/>
-                      <a href="<?= base_url('TalasMaps/detailtoko/').$tk->id_toko?>" class="btn btn-small btn-main btn-round-full"
-                        >Lihat Detail</a
-                      >
+                      <a href="<?= base_url('TalasMaps/detailtoko/').$tk->id_toko?>" class="btn btn-small btn-main btn-round-full">Lihat Detail</a>
                     </div>
                   </div>
                 </div>

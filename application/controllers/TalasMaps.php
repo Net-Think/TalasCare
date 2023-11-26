@@ -13,6 +13,7 @@ class TalasMaps extends CI_Controller{
     public function index(){
         $data['user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['toko'] = $this->M_tokoobat->datatoko();
+        $data['tokomap'] = $this->M_tokoobat->datatokomap();
         $this->load->view('templates/Header',$data);
         $this->load->view('TalasMaps',$data);
         $this->load->view('templates/Footer');

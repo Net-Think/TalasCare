@@ -203,7 +203,7 @@
                                 <?php endif ?>
                                 <?php if ($this->session->userdata('status') == 'login' && $frm->id_user == $user['id_user']) : ?>
                                 <div class="action">
-                                    <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
+                                <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
                                     <img src="<?=base_url('assets/')?>image/like.svg" alt="">
                                         <span class="like-count"><?= $frm->jumlah_suka ?></span>
                                     </button>
@@ -220,8 +220,8 @@
                                 </div>
                                 <?php elseif($this->session->userdata('status') == 'login') : ?>
                                     <div class="action">
-                                    <button class="btn btn-action like-button <?= ($frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
-                                        <img src="<?=base_url('assets/')?>image/like.svg" alt="">
+                                    <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
+                                    <img src="<?=base_url('assets/')?>image/like.svg" alt="">
                                         <span class="like-count"><?= $frm->jumlah_suka ?></span>
                                     </button>
                                     <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">

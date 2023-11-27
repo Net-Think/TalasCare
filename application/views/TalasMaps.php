@@ -57,62 +57,16 @@
     <section id="tracking" class="tracking-section pt-150">
       <div class="container">
         <div class="row align-items-center">
-          <!-- ========================= Filter-section start ========================= -->
-          <div class="col-lg-1 col-xl-5">
-            <div class="card">
-              <div class="card-body">
-                <h3 class="card-title">Jenis Toko</h3>
-                <div class="card-text">
-                  <p><input type="checkbox" name="Obat Tanaman"/> Obat Tanaman</p>
-                  <p><input type="checkbox" name="Olahan Talas"/> Olahan Talas</p>
-                  <p><input type="checkbox" name="Hasil Panen Talas"/> Hasil Panen Talas</p>
-                </div>
-                <h3 class="card-title">Lokasi Toko</h3>
-                <div class="card-text">
-                  <p><input type="checkbox" name="kota bogor"/> Kota Bogor</p>
-                  <p><input type="checkbox" name="kabupaten bogor"/> Kabupaten Bogor</p>
-                </div>
-                <h3 class="card-title">Rating Toko</h3>
-                <div class="card-text">
-                  <p><input type="checkbox" name="lima_rating"/> <img src="<?= base_url('assets/images/')?>Bintang/Bintang_5.png" height="35"/></p>
-                  <p><input type="checkbox" name="empat_rating"/> <img src="<?= base_url('assets/images/')?>Bintang/Bintang_4.png" height="35"/></p>
-                  <p><input type="checkbox" name="tiga_rating"/> <img src="<?= base_url('assets/images/')?>Bintang/Bintang_3.png" height="35"/></p>
-                  <p><input type="checkbox" name="dua_rating"/> <img src="<?= base_url('assets/images/')?>Bintang/Bintang_2.png" height="35"/></p>
-                  <p><input type="checkbox" name="lima_rating"/> <img src="<?= base_url('assets/images/')?>Bintang/Bintang_1.png" height="35"/></p>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- ========================= Filter-section end ========================= -->
           <!-- ========================= Content-section start ========================= -->
-          <div class="col-lg-6 col-xl-7">
+          <div class="col-lg-12 col-12 col-xl-12">
             <div class="tracking-content">
-              <div class="section-title mb-50">
-                <form action="#" method="get">
-                  <input type="text" name="search">
-                  <input type="submit" value="Search">
-                </form>
-              </div>
-              <div class="row mb-30">
-                <div class="col-md-2">
-                  <div class="border-first-button">
-                    <a href="#">Semua</a>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="border-first-button">
-                    <a href="#">Rekomendasi</a>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="border-first-button">
-                    <a href="#">Terdekat</a>
-                  </div>
-                </div>
+              <div class="section-title mb-50 text-center">
+                <h1>Toko Obat</h1>
               </div>
               <div class="row mb-30">
                 <?php foreach($toko as $tk):?>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="card mb-3">
                     <img
                       src="<?=base_url('assets/img/upload/').$tk->gambar?>"

@@ -146,7 +146,7 @@
                                 <div class="form-komen">
                                     <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
                                         <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user')?>">
-                                        <input type="text" class="input-post col-12" placeholder="Tulis sesuatu" name="isi">
+                                        <input type="text" class="input-post col-12" placeholder="Tulis sesuatu" name="isi" autocomplete="off" >
                                     <div class="image-upload">
                                         <label for="file-input">
                                             <img src="<?=base_url('assets/')?>image/upload.svg" type="button" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapseExample"/>
@@ -247,7 +247,7 @@
                                         <form action="<?= base_url('Forum/insertkomentar')?>" method="POST">
                                         <div class="form-komen">
                                             <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
-                                                <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required>
+                                                <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required autocomplete="off">
                                                 <input type="hidden" class="input-komen col-12" name="id_user_forum" value="<?=$frm->id_user?>">
                                                 <input type="hidden" class="input-komen col-12" name="id_user" value="<?=$user['id_user']?>">
                                                 <input type="hidden" class="input-komen col-12" name="id_forum" value="<?= $frm->id_forum ?>">
@@ -274,7 +274,7 @@
                                         <form action="<?= base_url('Forum/insertbalasan')?>" method="POST">
                                         <div class="form-komen">
                                             <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
-                                                <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required>
+                                                <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required autocomplete="off">
                                                 <input type="hidden" class="input-komen col-12" name="id_user" value="<?=$user['id_user']?>">
                                                 <input type="hidden" class="input-komen col-12" name="id_user_penerima" value="<?=$komentar->id_user?>">
                                                 <input type="hidden" class="input-komen col-12" name="id_komentar" value="<?= $komentar->id_komentar ?>">

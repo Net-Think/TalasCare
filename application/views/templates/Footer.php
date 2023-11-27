@@ -118,7 +118,7 @@ map.locate({ setView: true, maxZoom: 13 });
 
     <?php foreach($tokomap as $map) :?>
       var customIcon = L.icon({
-        iconUrl: '<?=base_url('assets/img/upload/'. $map['gambar']) ?>',
+        iconUrl: '<?=base_url('assets/img/upload/marker.svg') ?>',
         iconSize: [32, 32], // Adjust the size of your icon
         iconAnchor: [16, 32], // Adjust the anchor point of your icon
         popupAnchor: [0, -32] // Adjust the popup anchor of your icon

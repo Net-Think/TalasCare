@@ -39,11 +39,7 @@ class M_user extends CI_Model
     }
     function total()
     {
-        $query = $this->db->query("SELECT 
-        COUNT(*) AS totaluser,
-        (SELECT COUNT(*) FROM tbl_toko) AS totaltoko,
-        (SELECT COUNT(*) FROM tbl_blog) AS totalblog,
-        (SELECT COUNT(*) FROM tbl_forum) AS totalforum FROM tbl_user");
+        $query = $this->db->query("SELECT COUNT(*) AS totaluser, (SELECT COUNT(*) FROM tbl_toko) AS totaltoko, (SELECT COUNT(*) FROM tbl_blog) AS totalblog, (SELECT COUNT(*) FROM tbl_forum) AS totalforum FROM tbl_user");
         return $query->result();
     }
 

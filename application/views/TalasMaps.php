@@ -44,8 +44,8 @@
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="single-feature">
                       <div class="content">
-                        <div>
-                      <div id="map"></div>
+                      <div id="map">
+                        
                       </div>
                     </div>
                 </div>

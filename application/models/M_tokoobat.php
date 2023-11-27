@@ -36,4 +36,9 @@ class M_tokoobat extends  CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+    function total()
+    {
+        $query = $this->db->query("SELECT COUNT(*) AS total, (SELECT COUNT(*) FROM tbl_toko WHERE kota = 'Kota') AS kota, (SELECT COUNT(*) FROM tbl_toko WHERE kota = 'Kabupaten') AS kabupaten FROM tbl_toko");
+        return $query->result();
+    }
 }

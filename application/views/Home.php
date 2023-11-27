@@ -71,15 +71,15 @@
               <h1 class="mb-50 wow fadeInUp" data-wow-delay=".2s"> Pesebaran Toko Obat Hama di Bogor </h1>
               <div class="widget">
                 <div class="widget-item">
-                  <h1>124</h1>
+                  <h1><?php foreach ($total as $ttl):?><?=$ttl->total ?><?php endforeach?></h1>
                   <p>Total Toko Obat Hama</p>
                 </div>
                 <div class="widget-item">
-                  <h1>62</h1>
+                  <h1><?php foreach ($total as $ttl):?><?=$ttl->kota ?><?php endforeach?></h1></h1>
                   <p> di Kota Bogor</p>
                 </div>
                 <div class="widget-item">
-                  <h1>62</h1>
+                  <h1><?php foreach ($total as $ttl):?><?=$ttl->kabupaten ?><?php endforeach?></h1>
                   <p>di Kabupaten Bogor</p>
                 </div>
               </div>

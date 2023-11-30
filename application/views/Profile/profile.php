@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white topbar static-top shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-white topbar static-top shadow">
         <div class="container-fluid min-top">
             <img class="navbar-brand" width="109" src="<?=base_url('assets/')?>image/logo.png" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,23 +23,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link nav-active" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link nav-active d-none d-lg-block" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url() ?>">Beranda</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ml-auto">
                     <li class="nav-item">
                         <div class="justify-content-md-center">
                             <form class="d-flex my-auto d-inline w-500">
-                                <input class="form-search" type="search" placeholder="Cari forum" aria-label="Search">
+                                <input class="form-search d-none d-lg-block" type="search" placeholder="Cari forum" aria-label="Search">
                             </form>
                         </div>
                     </li>
                 </ul>
+                <?php if ($this->session->userdata('status') == 'login') : ?>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link notification" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link notification  d-none d-lg-block" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url('Profile/notifikasi')?>">Notifikasi</a>
                     </li>
                 </ul>
+                <?php endif ?>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if ($this->session->userdata('status') == 'login') : ?>
                     <li class="nav-item dropdown no-arrow">
@@ -129,12 +133,12 @@
                                     <h3>Profil</h3>
                                 </div>
                                 <?= $this->session->flashdata('message'); ?>
-                                <div class="row mt-2 mb-5">
+                                <div class="row mt-2">
                                     <div class="col-2">
                                         <span>Avatar</span>
                                         <img src="<?= base_url('assets/image/').$user['avatar']?>" class="rounded" width="100" height="100" alt="">
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-lg-5 mt-3">
                                         <div class="form-group">
                                             <label>Nama Lengkap</label>
                                             <input type="text" class="form-profil" value="<?= $user['nama']?>" disabled>
@@ -152,7 +156,7 @@
                                             <input type="text" class="form-profil" value="<?= $user['email']?>" disabled>
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-lg-5 mt-3">
                                         <div class="form-group">
                                             <label>Tanggal Lahir</label>
                                             <input type="date" class="form-profil" value="<?= $user['tanggal_lahir']?>" readonly>
@@ -163,7 +167,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row mt-2">
+                                    <div class="col-12 d-block d-lg-none">
+                                        <a href="<?= base_url('Profile/editProfile')?>" class="btn btn-purple col-12">
+                                            Edit Profil
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
             </div>

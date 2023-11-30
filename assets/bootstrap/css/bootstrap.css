@@ -3115,8 +3115,7 @@ fieldset:disabled .btn {
 	font-weight: 500;
 	font-size: 16px;
 	margin: 0 0 0 0;
-	border-radius: 100px;
-	padding: 11px 42px 11px 42px;
+	border-radius: 10px;
 }
 .btn-primary:hover {
 	color: #fff;
@@ -4244,6 +4243,10 @@ fieldset:disabled .btn {
 	color: #495057;
 	background-color: #fff;
 	border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-item{
+	padding-right: 10px;
 }
 .nav-tabs .dropdown-menu {
 	margin-top: -1px;
@@ -11948,16 +11951,15 @@ input:focus {
 
 .nav-active{
 	background-color: #C082B1;
-	border-radius: 7px;
+    border-radius: 7px;
+    padding: 5px; /* Add padding to control the background size */
 }
 
-.nav-item{
-	padding-right:20px;
-}
 
 .notification{
 	background-color: #F4F6F8;
-	border-radius: 7px;
+    border-radius: 7px;
+    padding: 5px; /* Add padding to control the background size */
 }
 
 .min-top{
@@ -12087,9 +12089,7 @@ input:focus {
 	display: flex;
 	padding: 20px;
 	flex-direction: column;
-	align-items: flex-start;
 	gap: 11px;
-
 	border-radius: 16px;
 	background: #FFF;
 	box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
@@ -12101,29 +12101,30 @@ input:focus {
 	gap: 7px;
 }
 
-.text-name{
-	display: flex;
-	align-items: center;
-	gap: 7px;
+.text-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
-.name{
-	color: var(--secondary-color-secondary-2, #3F4354);
-	font-feature-settings: 'clig' off, 'liga' off;
-	font-family: Poppins;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 22px; /* 157.143% */
+
+.name {
+    color: var(--secondary-color-secondary-2, #3F4354);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
 }
 
-.upload-time{
-	color: var(--secondary-color-secondary-3, #97989D);
-	font-family: Poppins;
-	font-size: 10px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 16px; /* 160% */
+.upload-time {
+    color: var(--secondary-color-secondary-3, #97989D);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
 }
 
 .title-forum{
@@ -12156,29 +12157,39 @@ input:focus {
 	line-height: 16px; /* 160% */
 }
 
-.action{
-	display: flex;
-	align-items: flex-start;
-	gap: 10px;
+.action {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
 }
 
-.btn-action{
-	display: flex;
-	height: 30px;
-	padding: 10px 11px;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-	border-radius: 15px;
-	background: var(--secondary-color-secondary-6, #F4F6F8);
+.btn-action {
+    display: flex; /* Set a minimum width for the buttons */
+    height: 30px; /* Adjust the height based on your design */
+    padding: 10 11px; /* Adjust the padding based on your design */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 15px;
+    background: var(--secondary-color-secondary-6, #F4F6F8);
+}
+
+/* Media query for small screens (e.g., mobile devices) */
+@media (max-width: 767px) {
+    .action {
+        flex-wrap: wrap;
+    }
+
+    .btn-action {
+        flex-grow: 1; /* Allow buttons to take up full width on small screens */
+    }
 }
 
 .card-komen{
 	display: flex;
-	padding: 20px 15px;
+	padding: 20px;
 	flex-direction: column;
-	align-items: flex-start;
-	gap: 12px;
+	gap: 11px;
 	border-radius: 16px;
 	border: 1px solid #E9E9E9;
 	background: var(--secondary-color-background, #FFF);
@@ -12193,7 +12204,6 @@ input:focus {
 .input-komen{
 	display: flex;
 	padding: 12px 0px 12px 12px;
-	align-items: flex-start;
 	border-radius: 6px;
 	background: var(--secondary-color-secondary-6, #F4F6F8);
 	color: var(--secondary-color-secondary-4, #858EAD);
@@ -12202,37 +12212,33 @@ input:focus {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	letter-spacing: -0.26px;
 	border: none;
-	width:380px;
 }
 
+
 .btn-purple{
-	display: flex;
-	padding: 12px 16px;
-	align-items: flex-start;
-	gap: 10px;
-	border-radius: 6px;
-	background: #C082B1;
-	color: var(--secondary-color-background, #FFF);
 	font-family: Poppins;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 20px; /* 142.857% */
+	line-height: 20px;
+	background-color: #C082B1;
+	margin: 0 0 0 0;
+	border-radius: 6px;
+	font-family: Poppins;
+	color: #ffff;
 }
 .btn-purple-secondary{
-	display: flex;
-	padding: 12px 16px;
-	align-items: flex-start;
-	gap: 10px;
-	border-radius: 6px;
-	border:1px solid #C082B1;
-	color: var(--secondary-color-background, #C082B1);
+	font-family: Poppins;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 20px; /* 142.857% */
+	line-height: 20px;
+	margin: 0 0 0 0;
+	border-radius: 6px;
+	font-family: Poppins;
+	border:1px solid #C082B1;
+	color: var(--secondary-color-background, #C082B1);
 }
 
 .line{
@@ -12241,27 +12247,43 @@ input:focus {
 	background: #E9E9E9;
 }
 
-.komentar{
-	display: flex;
-	align-items: flex-start;
-	gap: 7px;
+.komentar {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
 }
 
-.isi-komen{
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 6px;
+.komentar img {
+    max-width: 100%;
+    height: auto;
 }
 
-.komen-text{
-	color: #5D5D5D;
-font-family: Poppins;
-font-size: 13px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: -0.26px;
+/* Media query for small screens */
+@media only screen and (max-width: 600px) {
+    .komentar {
+        flex-direction: column;
+    }
+
+    .text-name {
+        flex-direction: row;
+    }
+}
+
+.isi-komen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.komen-text {
+    color: #5D5D5D;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.26px;
 }
 
 .card-upload{
@@ -12270,7 +12292,6 @@ letter-spacing: -0.26px;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 11px;
-
 	border-radius: 16px;
 	background: #FFF;
 	box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
@@ -12278,19 +12299,15 @@ letter-spacing: -0.26px;
 
 .input-post{
 	display: flex;
-	padding: 12px 0px 12px 12px;
-	align-items: flex-start;
+	padding: 12px 0px 12px 0px;
 	color: var(--secondary-color-secondary-4, #858EAD);
 	font-family: Poppins;
 	font-size: 13px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	letter-spacing: -0.26px;
 	border: 0;
-    outline: 0;
-    border-bottom: 2px solid #858EAD;;
-	width:380px;
+    border-bottom: 2px solid #858EAD;
 }
 
 .image-upload>input {

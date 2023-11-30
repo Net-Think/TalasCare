@@ -18,4 +18,10 @@ class M_info extends  CI_Model
         $query = $this->db->query("SELECT * FROM tbl_hama WHERE id_hama=$id");
         return $query->result();
     }
+    public function getHamaCount() {
+        $this->db->select('jenis, COUNT(*) as jumlah');
+        $this->db->group_by('jenis');
+        $query = $this->db->get('tbl_hama');
+        return $query->result_array();
+    }
 }

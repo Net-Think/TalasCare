@@ -2,6 +2,12 @@
 
 class M_forum extends CI_Model
 {
+    public function getForumCountByDate() {
+        $this->db->select('tanggal, COUNT(id_forum) as forum_count');
+        $this->db->group_by('tanggal');
+        $query = $this->db->get('tbl_forum');
+        return $query->result_array();
+    }
     public function dataforum()
     {
         $query = $this->db->query("SELECT *, (SELECT COUNT(*) FROM tbl_like_forum WHERE tbl_like_forum.id_forum = tbl_forum.id_forum) AS jumlah_suka, (SELECT COUNT(*) FROM tbl_komentar WHERE tbl_komentar.id_forum = tbl_forum.id_forum) AS jumlah_komentar FROM tbl_forum LEFT JOIN tbl_user ON tbl_forum.id_user=tbl_user.id_user ORDER BY id_forum DESC");

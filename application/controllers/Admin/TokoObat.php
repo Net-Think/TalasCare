@@ -174,5 +174,77 @@ class TokoObat extends CI_Controller{
     // Menutup output buffer
     fclose($output);
 }
+public function downloadPDF()
+{
+    // Memuat library TCPDF
+    $this->load->library('mytcpdf');
+
+    // Membuat objek TCPDF
+    $pdf = new Tcpdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+    // Mengatur informasi dokumen
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('Nama Anda');
+    $pdf->SetTitle('Data Toko Obat');
+
+    // Mengatur header dan footer
+    $pdf->setPrintHeader(false);
+    $pdf->setPrintFooter(false);
+
+    // Menambahkan halaman
+    $pdf->AddPage();
+
+    // Mengatur font
+    $pdf->SetFont('helvetica', '', 12);
+
+    // Mengambil data toko obat
+    $data['toko'] = $this->M_tokoobat->datatoko();
+
+    // Membuat tabel
+    $table = '<table border="1" cellpadding="5">';
+    $table .= '<tr>
+        <th>ID Toko</th>
+        <th>Nama Toko</th>
+        <th>Deskripsi</th>
+        <th>Jenis</th>
+        <th>Rating</th>
+        <th>Alamat</th>
+        <th>Lattitude</th>
+        <th>Longitude</th>
+        <th>No Telepon</th>
+        <th>Website</th>
+        <th>Jam Buka</th>
+        <th>Jam Tutup</th>
+        <th>Gambar</th>
+    </tr>';
+
+    // Menulis data toko obat ke dalam tabel
+    foreach ($data['toko'] as $toko) {
+        $table .= '<tr>
+            <td>' . $toko->id_toko . '</td>
+            <td>' . $toko->nama_toko . '</td>
+            <td>' . $toko->deskripsi . '</td>
+            <td>' . $toko->jenis . '</td>
+            <td>' . $toko->rating . '</td>
+            <td>' . $toko->alamat . '</td>
+            <td>' . $toko->lattitude . '</td>
+            <td>' . $toko->longitude . '</td>
+            <td>' . $toko->no_telp . '</td>
+            <td>' . $toko->website . '</td>
+            <td>' . $toko->jam_buka . '</td>
+            <td>' . $toko->jam_tutup . '</td>
+            <td>' . $toko->gambar . '</td>
+        </tr>';
+    }
+
+    $table .= '</table>';
+
+    // Menulis tabel ke PDF
+    $pdf->writeHTML($table, true, false, false, false, '');
+
+    // Menyimpan file PDF
+    $pdf->Output('data_toko_obat.pdf', 'D');
+}
+
 }
 

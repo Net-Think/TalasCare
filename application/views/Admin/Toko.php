@@ -5,7 +5,8 @@
                             <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data
                         </a>
                     </div>
-                    <a href="<?= base_url('admin/tokoobat/download-csv') ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-2"><i class="fa-solid fa-arrow-down"></i> Unduh Data</a>
+                    <a href="<?= base_url('admin/tokoobat/download-csv') ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-2"><i class="fa-solid fa-arrow-down"></i> Unduh Data (CSV)</a>
+                    <a href="<?= base_url('admin/tokoobat/downloadPDF') ?>" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mb-2"><i class="fa-solid fa-arrow-down"></i> Unduh Data (PDF)</a>
                     <?= $this->session->flashdata('message') ?>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -13,9 +14,9 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
+                            <table id="example" class="table table-bordered" style="width:100%">
+        <thead>
+        <tr>
                                             <th>Nama Toko</th>
                                             <th>Deskripsi</th>
                                             <th>Rating</th>
@@ -23,9 +24,9 @@
                                             <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php foreach($toko as $tk) :?>
+        </thead>
+        <tbody>
+        <?php foreach($toko as $tk) :?>
                                         <tr>
                                             <td><?= $tk->nama_toko ?></td>
                                             <td><?= $tk->deskripsi ?></td>
@@ -38,8 +39,8 @@
                                             </td>
                                         </tr>
                                     <?php endforeach?>
-                                    </tbody>
-                                </table>
+        </tbody>
+    </table>
                             </div>
                         </div>
                     </div>

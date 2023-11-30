@@ -8,6 +8,9 @@ class Profile extends CI_Controller{
         if ($this->session->userdata('akses')=="admin") {
             redirect('Admin/Dashboard');
         }
+        if ($this->session->userdata('status') != 'login') {
+            redirect('');
+        }
     }
 
     public function index(){

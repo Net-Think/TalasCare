@@ -15,17 +15,17 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="Alamat">Deskripsi</label>
-                                            <textarea class="form-control" id="alamat" name="deskripsi" rows="5" required></textarea>
+                                            <textarea class="form-control" id="alamat" name="deskripsi" rows="1"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="Alamat">Pencegahan</label>
-                                            <textarea class="form-control" id="alamat" name="pencegahan" rows="5" required></textarea>
+                                            <textarea class="form-control" id="alamat" name="pencegahan" rows="5"></textarea>
                                         </div>
                                 </div>
-                                <div class="col-xl-5 col-12">
+                                <div class="col-xl-6 col-12">
                                 <div class="form-group">
                                             <label for="Alamat">Pengobatan</label>
-                                            <textarea class="form-control" id="alamat" name="pengobatan" rows="5" required></textarea>
+                                            <textarea class="form-control" id="alamat" name="pengobatan" rows="5"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Jenis</label>

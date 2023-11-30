@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white topbar static-top shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-white topbar static-top shadow">
         <div class="container-fluid min-top">
             <img class="navbar-brand" width="109" src="<?=base_url('assets/')?>image/logo.png" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,23 +23,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link nav-active" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link nav-active d-none d-lg-block" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url() ?>">Beranda</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ml-auto">
                     <li class="nav-item">
                         <div class="justify-content-md-center">
                             <form class="d-flex my-auto d-inline w-500">
-                                <input class="form-search" type="search" placeholder="Cari forum" aria-label="Search">
+                                <input class="form-search d-none d-lg-block" type="search" placeholder="Cari forum" aria-label="Search">
                             </form>
                         </div>
                     </li>
                 </ul>
+                <?php if ($this->session->userdata('status') == 'login') : ?>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link notification" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link notification  d-none d-lg-block" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url('Profile/notifikasi')?>">Notifikasi</a>
                     </li>
                 </ul>
+                <?php endif ?>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if ($this->session->userdata('status') == 'login') : ?>
                     <li class="nav-item dropdown no-arrow">
@@ -130,7 +134,7 @@
                                 </div>
                                 <form action="<?= base_url('Profile/update') ?>" method="POST" enctype="multipart/form-data">
                                 <div class="row mt-2 mb-5">
-                                    <div class="col-2">
+                                    <div class="col-5 col-lg-2 col-md-2">
                                         <span>Avatar</span>
                                         <div class="col-12" id="show">
                                             <img id="output" class="img-thumbnail img-fluid" width="100" height="100">
@@ -143,7 +147,7 @@
                                             <input id="file-input" type="file" name="avatar" accept="image/*" onchange="loadFile(event)" onclick="hide()"/>
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-lg-5 mt-3">
                                         <div class="form-group">
                                             <label>Nama Lengkap</label>
                                             <input type="text" class="form-profil" name="nama" value="<?= $user['nama']?>" required>
@@ -161,7 +165,7 @@
                                             <input type="text" class="form-profil" name="email" value="<?= $user['email']?>" readonly required>
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-lg-5 mt-3">
                                         <div class="form-group">
                                             <label>Tanggal Lahir</label>
                                             <input type="date" class="form-profil" name="tanggal_lahir" value="<?= $user['tanggal_lahir']?>" required>
@@ -171,7 +175,7 @@
                                             <textarea type="text" class="form-profil" rows="7" name="alamat" required><?= $user['alamat']?></textarea>
                                         </div>
                                         <div class="row mt-3">
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <button type="submit" class="btn btn-purple">Simpan</button>
                                                 </form>
                                             </div>

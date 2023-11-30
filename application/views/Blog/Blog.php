@@ -37,9 +37,6 @@
                 <h3 class="mt-3 mb-3">
                   <a href="<?= base_url('Blog/detail/'.$blg->id_blog)?>"><?= $blg->judul ?></a>
                 </h3>
-                <p class="mb-4">
-                  <?= $blg->isi ?>
-                </p>
                 <a href="<?= base_url('Blog/detail/'.$blg->id_blog)?>" class="btn btn-small btn-main btn-round-full">Details</a>
               </div>
             </div>

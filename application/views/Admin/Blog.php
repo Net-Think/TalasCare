@@ -12,21 +12,19 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
+                            <table id="example" class="table table-bordered" style="width:100%">
+        <thead>
+        <tr>
                                             <th>Judul Blog</th>
-                                            <th>Isi</th>
                                             <th>Date/Time</th>
                                             <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php foreach($blog as $blg) :?>
+        </thead>
+        <tbody>
+        <?php foreach($blog as $blg) :?>
                                         <tr>
                                             <td><?= $blg->judul ?></td>
-                                            <td style="max-width:300px;" class="text-truncate"><?= $blg->isi ?></td>
                                             <td><?= $blg->tanggal ?></td>
                                             <td><img class="img img-fluid" width="100" src="<?= base_url('assets/img/blog/'.$blg->gambar)?>" alt="<?= $blg->gambar ?>"></td>
                                             <td>
@@ -36,8 +34,8 @@
                                             </td>
                                         </tr>
                                     <?php endforeach?>
-                                    </tbody>
-                                </table>
+        </tbody>
+    </table>
                             </div>
                         </div>
                     </div>

@@ -23,23 +23,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link nav-active" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link nav-active d-none d-lg-block" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url() ?>">Beranda</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ml-auto">
                     <li class="nav-item">
                         <div class="justify-content-md-center">
                             <form class="d-flex my-auto d-inline w-500">
-                                <input class="form-search" type="search" placeholder="Cari forum" aria-label="Search">
+                                <input class="form-search d-none d-lg-block" type="search" placeholder="Cari forum" aria-label="Search">
                             </form>
                         </div>
                     </li>
                 </ul>
+                <?php if ($this->session->userdata('status') == 'login') : ?>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link notification" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link notification  d-none d-lg-block" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url('Profile/notifikasi')?>">Notifikasi</a>
                     </li>
                 </ul>
+                <?php endif ?>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if ($this->session->userdata('status') == 'login') : ?>
                     <li class="nav-item dropdown no-arrow">
@@ -141,30 +145,38 @@
                         <div class="col-12">
                         <?php
                         if ($this->session->userdata('status') == 'login') : ?>
-                            <div class="card-upload">
-                                <form action="<?= base_url('Forum/insertforum')?>" method="POST" enctype="multipart/form-data">
-                                <div class="form-komen">
-                                    <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
+                        <div class="card-forum">
+                            <form action="<?= base_url('Forum/insertforum')?>" method="POST" enctype="multipart/form-data">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-1 d-none d-lg-block">
+                                        <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="40" height="40" class="rounded-circle">
+                                    </div>
+                                    <div class="col-lg-8 col-md-9 col-7">
                                         <input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user')?>">
-                                        <input type="text" class="input-post col-12" placeholder="Tulis sesuatu" name="isi" autocomplete="off" >
-                                    <div class="image-upload">
-                                        <label for="file-input">
-                                            <img src="<?=base_url('assets/')?>image/upload.svg" type="button" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapseExample"/>
-                                        </label>
-                                        <input id="file-input" type="file" name="gambar" accept="image/*" onchange="loadFile(event)" onclick="hide()"/>
-                                    </div>                                    
-                                    <button type="submit" class="btn btn-purple">Buat Postingan</button>
-                                </div>
-                                </form>
-                                <div class="collapse" id="collapsePost">
-                                    <div class="row">
-                                        <div class="col-2"></div>
-                                        <div class="col-8" id="show">
-                                            <img id="output" class="img-thumbnail img-fluid" width="300">
+                                        <input type="text" class="input-post col-12" placeholder="Tulis sesuatu" name="isi" autocomplete="off">
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-1">
+                                        <div class="image-upload">
+                                            <label for="file-input">
+                                                <img src="<?=base_url('assets/')?>image/upload.svg" type="button" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapseExample"/>
+                                            </label>
+                                            <input id="file-input" type="file" name="gambar" accept="image/*" onchange="loadFile(event)" onclick="hide()"/>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-4">
+                                        <button type="submit" class="btn btn-purple col-12">Kirim</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="collapse" id="collapsePost">
+                                <div class="row">
+                                    <div class="col-12 col-md-1 d-none d-lg-block"></div>
+                                    <div class="col-12 col-md-11" id="show">
+                                        <img id="output" class="img-thumbnail img-fluid" width="300">
                                     </div>
                                 </div>
                             </div>
+                        </div>
                             <?php else : ?>
                             <div class="border-first-button justify-content-center">
                                 <p>Masuk untuk menambah forum</p>
@@ -175,7 +187,7 @@
                     </div>
                     <?php foreach ($forum as $frm):?>
                     <div class="row mt-3">
-                        <div class="col-12">
+                        <div class="col-md-12 col-lg-12 col-12">
                             <div class="card-forum">
                                 <div class="display-name">
                                     <img src="<?= base_url('assets/image/').$frm->avatar ?>" alt="avatar" width="30" height="30" class="rounded-circle">
@@ -202,96 +214,125 @@
                                 <?php else : ?>
                                 <?php endif ?>
                                 <?php if ($this->session->userdata('status') == 'login' && $frm->id_user == $user['id_user']) : ?>
-                                <div class="action">
-                                <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
-                                    <img src="<?=base_url('assets/')?>image/like.svg" alt="">
-                                        <span class="like-count"><?= $frm->jumlah_suka ?></span>
-                                    </button>
-                                    <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
-                                        <img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $frm->jumlah_komentar ?>
-                                    </button>
-                                    <button class="btn btn-action" onclick="shareContent()">
-                                        <img src="<?=base_url('assets/')?>image/share.svg" alt=""> Bagikan
-                                    </button>
-                                    <a href="<?= base_url('Forum/hapusForum/' . $frm->id_forum) ?>" class="btn btn-action" onclick="return confirm('Anda yakin ingin menghapus forum ini?')">
-                                        <img src="<?= base_url('assets/image/trash.svg') ?>" alt="Hapus">
-                                        Hapus
-                                    </a>
-                                </div>
+                                    <div class="action">
+                                        <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
+                                        <img src="<?=base_url('assets/')?>image/like.svg" alt="">
+                                            <span class="like-count"><?= $frm->jumlah_suka ?></span>
+                                        </button>
+                                        <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
+                                            <img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $frm->jumlah_komentar ?>
+                                        </button>
+                                        <button class="btn btn-action" onclick="shareContent()">
+                                            <img src="<?=base_url('assets/')?>image/share.svg" alt=""> Bagikan
+                                        </button>
+                                        <button class="btn btn-action" onclick="confirmAndDelete(<?= $frm->id_forum ?>)">
+                                            <img src="<?= base_url('assets/image/trash.svg') ?>" alt="Hapus"> Hapus
+                                        </button>
+                                    </div>
                                 <?php elseif($this->session->userdata('status') == 'login') : ?>
                                     <div class="action">
-                                    <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
-                                    <img src="<?=base_url('assets/')?>image/like.svg" alt="">
-                                        <span class="like-count"><?= $frm->jumlah_suka ?></span>
-                                    </button>
-                                    <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
-                                        <img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $frm->jumlah_komentar ?>
-                                    </button>
-                                    <button class="btn btn-action" onclick="shareContent()">
-                                        <img src="<?=base_url('assets/')?>image/share.svg" alt=""> Bagikan
-                                    </button>
-                                </div>
+                                        <button class="btn btn-action like-button <?= (isset($frm->liked) && $frm->liked) ? 'liked' : '' ?>" data-forum-id="<?= $frm->id_forum ?>" onclick="likeForum(this)">
+                                            <img src="<?=base_url('assets/')?>image/like.svg" alt="">
+                                                <span class="like-count"><?= $frm->jumlah_suka ?></span>
+                                        </button>
+                                        <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
+                                            <img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $frm->jumlah_komentar ?>
+                                        </button>
+                                        <button class="btn btn-action" onclick="shareContent()">
+                                            <img src="<?=base_url('assets/')?>image/share.svg" alt=""> Bagikan
+                                        </button>
+                                    </div>
                                 <?php else: ?>
                                     <div class="action">
-                                    <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
-                                        <img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $frm->jumlah_komentar ?>
-                                    </button>
-                                    <button class="btn btn-action" onclick="shareContent()">
-                                        <img src="<?=base_url('assets/')?>image/share.svg" alt=""> Bagikan
-                                    </button>
+                                        <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseExample<?= $frm->id_forum ?>" aria-expanded="false" aria-controls="collapseExample">
+                                            <img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $frm->jumlah_komentar ?>
+                                        </button>
+                                        <button class="btn btn-action" onclick="shareContent()">
+                                            <img src="<?=base_url('assets/')?>image/share.svg" alt=""> Bagikan
+                                        </button>
                                     </div>
                                 <?php endif ?>
                                 <div class="collapse col-12" id="collapseExample<?=$frm->id_forum?>">
                                     <div class="card-komen">
                                         <?php if ($this->session->userdata('status') == 'login') : ?>
                                         <form action="<?= base_url('Forum/insertkomentar')?>" method="POST">
-                                        <div class="form-komen">
-                                            <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
-                                                <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required autocomplete="off">
-                                                <input type="hidden" class="input-komen col-12" name="id_user_forum" value="<?=$frm->id_user?>">
-                                                <input type="hidden" class="input-komen col-12" name="id_user" value="<?=$user['id_user']?>">
-                                                <input type="hidden" class="input-komen col-12" name="id_forum" value="<?= $frm->id_forum ?>">
-                                            <button class="btn btn-purple" type="submit">Posting Balasan</button>                                            
-                                        </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-1 d-none d-lg-block">
+                                                    <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-8">
+                                                    <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required autocomplete="off">
+                                                    <input type="hidden" name="id_user_forum" value="<?=$frm->id_user?>">
+                                                    <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
+                                                    <input type="hidden" name="id_forum" value="<?= $frm->id_forum ?>">
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-4">
+                                                    <button class="btn btn-purple col-12" type="submit">Kirim</button>
+                                                </div>
+                                            </div>
                                         </form>
                                         <?php endif ?>
                                         <?php $id_forum = $frm->id_forum;
                                         $query = $this->db->query("SELECT *, (SELECT COUNT(*) FROM tbl_balasan WHERE tbl_balasan.id_komentar = tbl_komentar.id_komentar) AS jumlah_balasan FROM tbl_komentar LEFT JOIN tbl_user ON tbl_komentar.id_user=tbl_user.id_user WHERE id_forum='$id_forum' ORDER BY id_komentar desc");
                                         foreach ($query->result() as $komentar) :?>
-                                        <div class="komentar col-12">
-                                            <img src="<?= base_url('assets/image/').$komentar->avatar ?>" alt="avatar" width="30" height="30" class="rounded-circle">
-                                            <div class="isi-komen">
-                                                <div class="text-name">
-                                                    <span class="name"><?= $komentar->username ?> <span class="upload-time">• <?= $komentar->tanggal ?></span></span>
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-2 col-2">
+                                                <img src="<?= base_url('assets/image/').$komentar->avatar ?>" alt="avatar" width="30" height="30" class="rounded-circle">
+                                            </div>
+                                            <div class="col-lg-11 col-md-10  col-10">
+                                                <span class="name"><?= $komentar->username ?> <span class="upload-time">• <?= $komentar->tanggal ?></span></span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-1 col-md-2 col-2">
                                                 </div>
-                                                <span class="komen-text"><?= $komentar->isi ?></span>
+                                                <div class="col-lg-11 col-md-10 col-10">
+                                                    <span class="komen-text"><?= $komentar->isi ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-1 col-md-2 col-2">
+                                                </div>
+                                                <div class="col-lg-11 col-md-10 col-10">
                                                 <button class="btn btn-action" type="button" data-toggle="collapse" data-target="#collapseBalasan<?= $komentar->id_komentar?>" aria-expanded="false" aria-controls="collapseBalasan"><img src="<?=base_url('assets/')?>image/komen.svg" alt=""> <?= $komentar->jumlah_balasan?></button>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="collapse col-12" id="collapseBalasan<?=$komentar->id_komentar?>">
                                     <div class="card-komen col-12">
                                     <?php if ($this->session->userdata('status') == 'login') : ?>
                                         <form action="<?= base_url('Forum/insertbalasan')?>" method="POST">
-                                        <div class="form-komen">
-                                            <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
-                                                <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required autocomplete="off">
-                                                <input type="hidden" class="input-komen col-12" name="id_user" value="<?=$user['id_user']?>">
-                                                <input type="hidden" class="input-komen col-12" name="id_user_penerima" value="<?=$komentar->id_user?>">
-                                                <input type="hidden" class="input-komen col-12" name="id_komentar" value="<?= $komentar->id_komentar ?>">
-                                            <button class="btn btn-purple" type="submit">Posting</button>                                            
-                                        </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-1 d-none d-lg-block">
+                                                    <img src="<?= base_url('assets/image/'). $user['avatar']?>" alt="avatar" width="30" height="30" class="rounded-circle">
+                                                </div>
+                                                <div class="col-lg-9 col-md-9 col-7">
+                                                    <input type="text" class="input-komen col-12" placeholder="Tulis balasan" name="isi" required autocomplete="off">
+                                                    <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
+                                                    <input type="hidden" name="id_user_penerima" value="<?=$komentar->id_user?>">
+                                                    <input type="hidden" name="id_komentar" value="<?= $komentar->id_komentar ?>">
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-5">
+                                                    <button class="btn btn-purple col-12" type="submit">Kirim</button>
+                                                </div>
+                                            </div>
                                         </form>
-                                        <?php endif?>
+                                        <?php endif ?>
                                         <?php $id_komentar = $komentar->id_komentar;
                                         $query = $this->db->query("SELECT * FROM tbl_balasan LEFT JOIN tbl_user ON tbl_balasan.id_user=tbl_user.id_user WHERE id_komentar='$id_komentar' ORDER BY id_balasan desc");
                                         foreach ($query->result() as $balasan) :?>
-                                        <div class="komentar col-12">
-                                            <img src="<?= base_url('assets/image/').$balasan->avatar ?>" alt="avatar" width="30" height="30" class="rounded-circle">
-                                            <div class="isi-komen">
-                                                <div class="text-name">
-                                                    <span class="name"><?= $balasan->username ?> <span class="upload-time">• <?= $balasan->tanggal ?></span></span>
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-2 col-2">
+                                                <img src="<?= base_url('assets/image/').$balasan->avatar ?>" alt="avatar" width="30" height="30" class="rounded-circle">
+                                            </div>
+                                            <div class="col-lg-11 col-md-10  col-10">
+                                                <span class="name"><?= $balasan->username ?> <span class="upload-time">• <?= $balasan->tanggal ?></span></span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-1 col-md-2 col-2">
                                                 </div>
-                                                <span class="komen-text"><?= $balasan->isi ?></span>
+                                                <div class="col-lg-11 col-md-10 col-10">
+                                                    <span class="komen-text"><?= $balasan->isi ?></span>
+                                                </div>
                                             </div>
                                         </div>
                                         <?php endforeach?>
@@ -365,6 +406,16 @@
             reader.readAsDataURL(event.target.files[0]);
         };
     </script>
+    <script>
+    function confirmAndDelete(forumId) {
+        var isConfirmed = confirm('Anda yakin ingin menghapus forum ini?');
+
+        if (isConfirmed) {
+            // Perform the deletion by navigating to the URL
+            window.location.href = '<?= base_url('Forum/hapusForum/') ?>' + forumId;
+        }
+    }
+</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

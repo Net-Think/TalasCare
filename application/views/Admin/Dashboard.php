@@ -97,24 +97,12 @@
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold font-primary">Grafik Total Pengunjung Website (Bulan)</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Filter:</div>
-                        <a class="dropdown-item" href="#">Bulan Sebelumnya</a>
-                        <a class="dropdown-item" href="#">Bulan Selanjutnya</a>
-                    </div>
-                </div>
+                <h6 class="m-0 font-weight-bold font-primary">Grafik Total Forum Diupload Per Tanggal</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <canvas id="forumChart"></>
                 </div>
             </div>
         </div>
@@ -126,34 +114,101 @@
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold font-primary">Kategori Pengunjung Website</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Filter:</div>
-                        <a class="dropdown-item" href="#">Jumlah Signed In</a>
-                        <a class="dropdown-item" href="#">Jumlah Not Signed In</a>
-                    </div>
-                </div>
+                <h6 class="m-0 font-weight-bold font-primary">Perbandingan Jumlah Hama dan Penyakit</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                </div>
-                <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                        <i class="fas fa-circle purple"></i> Signed In
-                    </span>
-                    <span class="mr-2">
-                        <i class="fas fa-circle purple-secondary"></i> Not Signed In
-                    </span>
+                    <canvas id="hamaPieChart"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+        var ctx = document.getElementById("forumChart");
+        var forumChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode(array_column($forum_counts, 'tanggal')); ?>,
+                datasets: [{
+                    label: 'Jumlah Forum',
+                    backgroundColor: 'rgba(192, 130, 177, 0.2)', // Ganti dengan #C082B1
+                    borderColor: '#C082B1', // Ganti dengan #C082B1
+                    borderWidth: 1,
+                    data: <?php echo json_encode(array_column($forum_counts, 'forum_count')); ?>,
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            displayFormats: {
+                                day: 'YYYY-MM-DD'
+                            }
+                        },
+                        distribution: 'series',
+                        ticks: {
+                            source: 'auto',
+                        },
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    }],
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "#FFF",  // Ganti dengan warna putih
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: '#6e707e',
+                    titleFontSize: 14,
+                    borderColor: '#dddfeb',
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: 'index',
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            },
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById("hamaPieChart");
+        var hamaPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: <?php echo json_encode(array_column($hama_counts, 'jenis')); ?>,
+                datasets: [{
+                    data: <?php echo json_encode(array_column($hama_counts, 'jumlah')); ?>,
+                    backgroundColor: ['#C082B1', '#E8BDDD'], // Ganti dengan warna sesuai keinginan
+                }],
+            },
+            options: {
+                maintainAspectRatio: false,
+            },
+        });
+    </script>

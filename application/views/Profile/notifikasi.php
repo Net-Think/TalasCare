@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white topbar static-top shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-white topbar static-top shadow">
         <div class="container-fluid min-top">
             <img class="navbar-brand" width="109" src="<?=base_url('assets/')?>image/logo.png" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,21 +23,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link nav-active" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link nav-active d-none d-lg-block" href="<?= base_url() ?>"><img src="<?=base_url('assets/')?>image/home.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url() ?>">Beranda</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-auto ml-auto">
                     <li class="nav-item">
                         <div class="justify-content-md-center">
                             <form class="d-flex my-auto d-inline w-500">
-                                <input class="form-search" type="search" placeholder="Cari forum" aria-label="Search">
+                                <input class="form-search d-none d-lg-block" type="search" placeholder="Cari forum" aria-label="Search">
                             </form>
                         </div>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link notification" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link notification  d-none d-lg-block" href="<?= base_url('Profile/notifikasi')?>"><img src="<?=base_url('assets/')?>image/lonceng.svg" alt=""></a>
+                        <a class="nav-link d-block d-lg-none" href="<?= base_url('Profile/notifikasi')?>">Notifikasi</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -88,10 +90,10 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-1">
+                                                    <div class="col-lg-1 col-md-2 col-2">
                                                     <img src="<?= base_url("assets/image/").$ntf->avatar?>" alt="" class="rounded" width="30">
                                                     </div>
-                                                    <div class="col-11">
+                                                    <div class="col-lg-11 col-md-10 col-10">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <small><b> <?=$ntf->username?></b> berkomentar pada forum kamu.</small>
@@ -116,10 +118,10 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-1">
+                                                    <div class="col-lg-1 col-md-2 col-2">
                                                     <img src="<?= base_url("assets/image/").$ntf->avatar?>" alt="" class="rounded" width="30">
                                                     </div>
-                                                    <div class="col-11">
+                                                    <div class="col-lg-11 col-md-10 col-10">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <small><b> <?=$ntf->username?></b> membalas komentar kamu.</small>

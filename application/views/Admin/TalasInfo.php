@@ -12,9 +12,9 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
+                            <table id="example" class="table table-bordered" style="width:100%">
+        <thead>
+        <tr>
                                             <th>Nama</th>
                                             <th>Jenis</th>
                                             <th>Deskripsi</th>
@@ -22,9 +22,9 @@
                                             <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php foreach($talasinfo as $tlsinfo) :?>
+        </thead>
+        <tbody>
+        <?php foreach($talasinfo as $tlsinfo) :?>
                                         <tr>
                                             <td><?= $tlsinfo->nama ?></td>
                                             <td><?= $tlsinfo->jenis ?></td>
@@ -38,8 +38,8 @@
                                             </td>
                                         </tr>
                                     <?php endforeach?>
-                                    </tbody>
-                                </table>
+        </tbody>
+    </table>
                             </div>
                         </div>
                     </div>

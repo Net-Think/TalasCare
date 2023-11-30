@@ -53,7 +53,11 @@
     
                 <div class="blog-item-content bg-white p-5">
                     <img src="<?= base_url('assets/img/blog/').$blg->gambar?>" alt="" class="img-fluid rounded">
-                    <p><?= $blg->isi?></p>
+                    <div class="row">
+                        <div class="col-12">
+                         <?= $blg->isi ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,23 +72,6 @@
             <div class="card-body p-4 text-center">
                 <h5 class="mb-0 mt-4"><?= $blg->nama ?></h5>
                 <p>Admin</p>
-                <!-- <ul class="list-inline author-socials">
-                    <li class="list-inline-item mr-3">
-                        <a href="#"><i class="fab fa-facebook-f text-muted"></i></a>
-                    </li>
-                    <li class="list-inline-item mr-3">
-                        <a href="#"><i class="fab fa-twitter text-muted"></i></a>
-                    </li>
-                    <li class="list-inline-item mr-3">
-                        <a href="#"><i class="fab fa-linkedin-in text-muted"></i></a>
-                    </li>
-                    <li class="list-inline-item mr-3">
-                        <a href="#"><i class="fab fa-pinterest text-muted"></i></a>
-                    </li>
-                    <li class="list-inline-item mr-3">
-                        <a href="#"><i class="fab fa-behance text-muted"></i></a>
-                    </li>
-                </ul> -->
             </div>
         </div>
     

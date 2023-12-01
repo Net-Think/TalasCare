@@ -1,4 +1,4 @@
-const apiKey = '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';
+const apiKey = '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';
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendMessageButton = document.getElementById('sendMessage');
